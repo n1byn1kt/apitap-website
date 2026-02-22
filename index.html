@@ -211,9 +211,11 @@ nav .nav-inner {
 }
 
 /* ── How It Works ─────────────────────────────────────── */
-#how { background: linear-gradient(180deg, #0a0a0f 0%, #0d0d18 100%); }
+#how { background: linear-gradient(180deg, #0a0a0f 0%, #0d0d18 100%); text-align: center; }
+#how .steps { text-align: left; }
 .steps {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+  max-width: 1120px; margin: 0 auto;
 }
 @media (max-width: 1024px) {
   .steps { grid-template-columns: 1fr; gap: 24px; }
