@@ -794,15 +794,15 @@ footer a:hover { color: #00e5c0; }
     {
       key: 'reddit', label: 'Reddit',
       browserTokens: '~8,900 tokens', apitapTokens: '627 tokens',
-      browserContent: '<shreddit-app class="reddit-desktop">\n<dsa-transparency-modal-provider>\n<report-flow-provider><shreddit-overlay-\ndisplay><div class="grid grid-cols-1\nm:grid-cols-[272px_1fr_312px]"><div id=\n"left-sidebar-container">...\n<shreddit-post id="t3_abc123" permalink=\n"/r/programming/comments/abc123/..." ...\n<faceplate-tracker source="post" action=\n"view"><div slot="children">...\n<!-- 8,000+ tokens of React hydration -->',
-      apitapContent: '{\n  "subreddit": "r/programming",\n  "title": "Show HN: ApiTap...",\n  "score": 847,\n  "comments": [\n    {\n      "author": "dev_curious",\n      "body": "This is really neat...",\n      "score": 142\n    }\n    // ... structured thread\n  ]\n}',
+      browserContent: '<shreddit-app class="reddit-desktop">\n<dsa-transparency-modal-provider>\n<report-flow-provider><shreddit-overlay-\ndisplay><div class="grid grid-cols-1\nm:grid-cols-[272px_1fr_312px]"><div id=\n"left-sidebar-container">...\n<shreddit-post id="t3_1k8x9y2" permalink=\n"/r/programming/comments/1k8x9y2/..." ...\n<faceplate-tracker source="post" action=\n"view"><div slot="children">...\n<!-- 8,000+ tokens of React hydration -->',
+      apitapContent: '{\n  "subreddit": "r/programming",\n  "title": "ApiTap: Skip the browser, call the API directly",\n  "score": 847,\n  "comments": [\n    {\n      "author": "dev_curious",\n      "body": "This is really neat...",\n      "score": 142\n    }\n    // ... structured thread\n  ]\n}',
       pct: '93', desc: 'Structured thread with comments. No DOM parsing.'
     },
     {
       key: 'hn', label: 'Hacker News',
       browserTokens: '~2,000 tokens', apitapTokens: '~200 tokens',
       browserContent: '<html><head><meta name="referrer"\ncontent="origin"><link rel="stylesheet"\ntype="text/css" href="news.css">...\n<table border="0" cellpadding="0"\ncellspacing="0" width="85%" bgcolor="#f6f6ef">\n<tr><td bgcolor="#ff6600"><table ...>\n<span class="titleline"><a href="...">\nShow HN: ...</a></span>\n<span class="subtext">\n<span class="score" id="score_12345">\n247 points</span>...\n<!-- nested table layout from 2007 -->',
-      apitapContent: '{\n  "id": 12345,\n  "title": "Show HN: ApiTap...",\n  "score": 247,\n  "by": "n1byn1kt",\n  "comments": 89,\n  "url": "https://apitap.io"\n}',
+      apitapContent: '{\n  "id": 12345,\n  "title": "Show HN: ApiTap...",\n  "score": 247,\n  "by": "simonw",\n  "comments": 89,\n  "url": "https://apitap.io"\n}',
       pct: '90', desc: 'Clean JSON from the Firebase API. No table parsing.'
     },
     {
