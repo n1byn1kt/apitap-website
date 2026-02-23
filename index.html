@@ -444,6 +444,9 @@ footer a:hover { color: #00e5c0; }
         <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
         GitHub
       </a>
+      <a href="https://github.com/n1byn1kt/apitap" target="_blank" rel="noopener" class="gh-btn" style="background:rgba(0,229,192,0.08);border-color:#00e5c0;color:#00e5c0;">
+        &#11088; Star on GitHub
+      </a>
     </div>
   </div>
 </nav>
@@ -634,7 +637,7 @@ footer a:hover { color: #00e5c0; }
     <div class="footer-inner">
       <span>ApiTap</span>
       <span class="sep">&middot;</span>
-      <span>BSL 1.1 (free for non-commercial use)</span>
+      <span>BSL 1.1 — Free for personal &amp; open-source use. Commercial license available.</span>
       <span class="sep">&middot;</span>
       <a href="https://github.com/n1byn1kt/apitap" target="_blank" rel="noopener">GitHub</a>
       <span class="sep">&middot;</span>
@@ -804,6 +807,13 @@ footer a:hover { color: #00e5c0; }
       browserContent: '<html><head><meta name="referrer"\ncontent="origin"><link rel="stylesheet"\ntype="text/css" href="news.css">...\n<table border="0" cellpadding="0"\ncellspacing="0" width="85%" bgcolor="#f6f6ef">\n<tr><td bgcolor="#ff6600"><table ...>\n<span class="titleline"><a href="...">\nShow HN: ...</a></span>\n<span class="subtext">\n<span class="score" id="score_12345">\n247 points</span>...\n<!-- nested table layout from 2007 -->',
       apitapContent: '{\n  "id": 12345,\n  "title": "Show HN: ApiTap...",\n  "score": 247,\n  "by": "n1byn1kt",\n  "comments": 89,\n  "url": "https://apitap.io"\n}',
       pct: '90', desc: 'Clean JSON from the Firebase API. No table parsing.'
+    },
+    {
+      key: 'pentagon', label: 'Pentagon Pizza \uD83C\uDF55',
+      browserTokens: '~3,000 tokens', apitapTokens: '189 tokens',
+      browserContent: '<html><head><title>PIZZINT Watch - Global\nThreat Assessment Dashboard</title>\n<meta name="viewport" content="width=device-\nwidth"><link rel="stylesheet" href="/assets/\ndashboard.css"><script src="/vendor/d3.min.js">\n</script><script src="/vendor/topojson.js">\n</script>...\n<div class="dashboard-grid">\n<div class="threat-panel" id="doomsday-\nclock-widget"><svg viewBox="0 0 400 400">\n<circle cx="200" cy="200" r="190" class=\n"clock-face"/>...\n<div class="prediction-markets-feed"\ndata-source="polymarket,metaculus">\n<div class="market-card" data-event-id=\n"evt_291847"><span class="outcome">\n<!-- 2,500+ more tokens of SVG maps\nand nested dashboard components -->',
+      apitapContent: '{\n  "doomsday_clock": "89 seconds to midnight",\n  "markets": [\n    {\n      "source": "Polymarket",\n      "title": "NATO expansion by 2026",\n      "probability": 0.73,\n      "volume": "$2.1M"\n    },\n    {\n      "source": "GDELT",\n      "event": "Global instability index",\n      "score": 312,\n      "trend": "rising"\n    },\n    {\n      "source": "Doomsday Clock",\n      "status": "89 seconds to midnight",\n      "last_moved": "2024-01-23"\n    }\n  ]\n}',
+      pct: '94', desc: 'Live geopolitical prediction markets. No browser.'
     }
   ];
 
@@ -861,7 +871,7 @@ footer a:hover { color: #00e5c0; }
   var flow = el('div', { className: 'anysite-flow' });
 
   var flowLines = [
-    { cls: 'fl-cmd', text: '$ apitap browse https://techcrunch.com' },
+    { cls: 'fl-cmd', text: '$ apitap capture https://techcrunch.com' },
     { cls: 'fl-label', text: 'Discovery: ', after: 'WordPress detected (medium confidence)', afterCls: 'fl-result' },
     { cls: 'fl-label', text: 'Probing: ', after: 'GET /wp-json/wp/v2/posts', afterCls: 'fl-result' },
     { cls: 'fl-label', text: 'Result: ', after: '200 OK \u2014 10 articles, structured JSON', afterCls: 'fl-result' }

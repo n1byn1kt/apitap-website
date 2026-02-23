@@ -1,0 +1,71 @@
+Build the apitap.io landing page as a single self-contained index.html file (no build tools, no framework — just HTML/CSS/JS that opens directly in a browser).
+
+## Context
+Read this brainstorm doc first: ~/clawd/projects/apitap/docs/website-brainstorm.md
+
+## What ApiTap is
+An MCP server that turns any website into an API — no docs, no SDK, no browser.
+- Captures a site's internal API endpoints via Playwright network interception
+- Generates portable "skill files" (JSON maps of endpoints)  
+- Replays them with fetch() — no browser, 100x fewer tokens
+- 789 tests, v1.0.6, BSL-1.1 (free for non-commercial)
+- Install: npm install -g @apitap/core
+
+## Token numbers (use these exactly)
+- YouTube video: 36 tokens (vs ~4,200 browser)
+- Reddit thread: 627 tokens (vs ~8,900 browser)
+- Wikipedia article: 127 tokens (vs ~4,900 browser)
+- HN thread: ~200 tokens (vs ~2,000 browser)
+
+## Design direction
+- Dark developer aesthetic — color palette: #0a0a0f bg, #141420 surface, #00e5c0 teal accent, #ff4d4d red, #ffb84d amber, #e8e8f0 text
+- Fonts from Google Fonts: JetBrains Mono (headings, code), Inter (body)
+- Make the TOKEN NUMBERS visceral — 36 vs 4,900 is the centerpiece
+- No stock illustrations, no blob SVGs, no purple gradients
+- Dense, not spacious — developers don't want whitespace cathedrals
+- Terminal-look code blocks with syntax highlighting
+
+## Required sections (single scroll page)
+1. Sticky nav: "ApiTap" logo + anchor links + GitHub star button
+2. Hero: H1 "Skip the browser. Call the API." (typewriter stagger) + interactive token widget right column
+3. Problem: Two-column cards "The Browser Way" (red) vs "The ApiTap Way" (green) with real numbers
+4. How It Works: 3-step pipeline: Capture → Skill File → Replay
+5. Live Demos: Tabbed interface — YouTube (36t), Reddit (627t), Wikipedia (127t), Any Site
+6. Security: 2x3 grid of 6 cards (SSRF protection, skill signing, encrypted auth, PII scrubbing, read-only capture, header injection protection)
+7. Get Started: Terminal with install commands + MCP client logos row
+8. Footer: minimal
+
+## Interactive token widget (hero right column)
+- Terminal-style dark box
+- Three preset buttons: [YouTube] [Reddit] [Wikipedia]
+- On click: show animation sequence with terminal output
+- Big red bar = browser tokens, tiny teal bar = ApiTap tokens
+- Numbers count up to final values
+- Pure vanilla JS only
+
+## Animations
+- Hero headline: CSS stagger animation (each word/line staggers in, 150ms delay between)
+- Token count-up: JS counter animation
+- Sections: fade-in on scroll via IntersectionObserver
+- Tab switch: smooth crossfade
+- No animation on code blocks (devs want to read them)
+
+## Copy to use
+Headline: "Skip the browser. Call the API."
+Subhead: "Every website has an API powering it. ApiTap finds it, captures it, and lets your AI agent call it directly — no browser, no scraping, no DOM. Just structured JSON at 1/100th the token cost."
+Problem section: "Browser automation was built for humans. Your AI agent isn't one."
+How It Works: "Three steps. No browser after step one."
+Security: "Hardened for production."
+Get Started: "Two commands. Then ask your agent to browse."
+Tagline: "The web was built for human eyes; ApiTap makes it native to machines."
+
+## Install commands
+npm install -g @apitap/core
+claude mcp add -s user apitap -- apitap-mcp
+
+## Links
+- GitHub: https://github.com/n1byn1kt/apitap
+- npm: https://www.npmjs.com/package/@apitap/core
+
+Build a single exceptional index.html. When done, run:
+openclaw system event --text "Done: ApiTap website built — ~/clawd/projects/apitap-website/index.html" --mode now
