@@ -466,7 +466,7 @@ footer a:hover { color: #00e5c0; }
           <span class="hero-line">Skip the browser<span class="period">.</span></span>
           <span class="hero-line">Call the API<span class="period">.</span></span>
         </h1>
-        <p class="hero-sub">Every website has an API powering it. ApiTap finds it, captures it, and lets your AI agent call it directly — no browser, no scraping, no DOM. Just structured JSON at 1/100th the token cost.</p>
+        <p class="hero-sub">Every website has an API powering it. ApiTap finds it, captures it, and lets your AI agent call it directly — no browser, no scraping, no DOM. Just structured JSON at a fraction of the token cost.</p>
         <div class="hero-cta">
           <div class="install-block" id="install-block" title="Click to copy">
             <code><span class="dollar">$</span> npm install -g @apitap/core</code>
@@ -491,9 +491,10 @@ footer a:hover { color: #00e5c0; }
           </div>
           <div class="tw-body">
             <div class="tw-picks">
-              <button class="tw-pick active" data-site="youtube">YouTube</button>
-              <button class="tw-pick" data-site="reddit">Reddit</button>
+              <button class="tw-pick active" data-site="reddit">Reddit</button>
+              <button class="tw-pick" data-site="hn">Hacker News</button>
               <button class="tw-pick" data-site="wikipedia">Wikipedia</button>
+              <button class="tw-pick" data-site="tradingview">TradingView</button>
             </div>
             <div class="tw-output" id="tw-output"></div>
           </div>
@@ -516,22 +517,22 @@ footer a:hover { color: #00e5c0; }
           <li>Launch headless Chrome <span class="aside">200MB RAM</span></li>
           <li>Navigate to page <span class="aside">3-5 seconds</span></li>
           <li>Wait for JS to render <span class="aside">flaky</span></li>
-          <li>Parse the DOM <span class="aside">50,000 tokens</span></li>
+          <li>Parse the DOM <span class="aside">68,996 tokens</span></li>
           <li>Convert to markdown <span class="aside">lossy</span></li>
           <li>Feed to LLM <span class="aside">expensive</span></li>
           <li>Repeat for every page <span class="aside">linear cost</span></li>
         </ol>
-        <div class="pcard-stat"><span class="big">4,900</span> tokens to read a Wikipedia article.</div>
+        <div class="pcard-stat"><span class="big">68,996</span> tokens to read a Wikipedia article.</div>
       </div>
       <div class="pcard apitap">
         <div class="pcard-header"><span class="indicator"></span> The ApiTap Way</div>
         <ol>
           <li>Capture the site's API once <span class="aside">30 seconds</span></li>
           <li>Call the endpoint directly <span class="aside">fetch()</span></li>
-          <li>Get structured JSON <span class="aside">127 tokens</span></li>
+          <li>Get structured JSON <span class="aside">76 tokens</span></li>
           <li>Done. <span class="aside">that's it</span></li>
         </ol>
-        <div class="pcard-stat"><span class="big">127</span> tokens for the same article.</div>
+        <div class="pcard-stat"><span class="big">76</span> tokens for the same article.</div>
       </div>
     </div>
     <p class="problem-closer reveal">That's not an optimization. That's a different architecture.</p>
@@ -594,15 +595,14 @@ footer a:hover { color: #00e5c0; }
       <img src="./demo-screenshot.png" alt="TechCrunch demo screenshot" style="max-width:540px;width:100%;border-radius:12px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 4px 32px #000a;display:block;margin:0 auto 18px auto">
       <div style="font-size:1.05rem;margin-bottom:8px;color:#e8e8f0">Browser: <span style="color:#ff4d4d">~8,000 tokens</span> &rarr; ApiTap: <span style="color:#00e5c0">~200 tokens</span> = <span style="color:#00e5c0;font-weight:600">97% reduction</span></div>
       <div style="font-size:0.98rem;color:#7a7a8e;margin-bottom:12px">Works in any AI assistant. One command. Live data.</div>
-      <div style="font-size:0.92rem;color:#7a7a8e;margin-bottom:8px">Pentagon Pizza: capture → replay → full geopolitical intelligence briefing</div>
-      <div style="font-size:0.92rem;color:#7a7a8e">36 tokens. No browser. Live intel.</div>
+      <div style="font-size:0.92rem;color:#7a7a8e">Reddit: 125,805 tokens of HTML → 641 tokens via ApiTap. Same data.</div>
     </div>
     <div class="demo-tabs reveal" id="demo-tabs"></div>
 
     <div id="demo-panels"></div>
 
     <div class="demo-callout reveal">
-      These aren't mock numbers. Run <code>apitap read https://youtube.com/watch?v=dQw4w9WgXcQ</code> yourself and count the tokens.
+      These aren't mock numbers. Run <code>apitap read https://news.ycombinator.com/</code> yourself and count the tokens.
     </div>
   </div>
 </section>
@@ -682,9 +682,10 @@ footer a:hover { color: #00e5c0; }
 
   // ── Token Widget Data ─────────────────────────────────
   var SITES = {
-    youtube: { url: 'https://youtube.com/watch?v=dQw4w9WgXcQ', name: 'YouTube', decoder: 'YouTube decoder', browser: 4200, apitap: 36, pct: 99 },
-    reddit: { url: 'https://reddit.com/r/programming/top', name: 'Reddit', decoder: 'Reddit decoder', browser: 8900, apitap: 627, pct: 93 },
-    wikipedia: { url: 'https://en.wikipedia.org/wiki/TypeScript', name: 'Wikipedia', decoder: 'Wikipedia decoder', browser: 4900, apitap: 127, pct: 97 }
+    reddit: { url: 'https://reddit.com/r/programming/', name: 'Reddit', decoder: 'Reddit decoder', browser: 125805, apitap: 641, pct: 99 },
+    hn: { url: 'https://news.ycombinator.com/', name: 'Hacker News', decoder: 'HN Firebase decoder', browser: 8604, apitap: 219, pct: 97 },
+    wikipedia: { url: 'https://en.wikipedia.org/wiki/TypeScript', name: 'Wikipedia', decoder: 'Wikipedia decoder', browser: 68996, apitap: 76, pct: 99 },
+    tradingview: { url: 'https://www.tradingview.com/', name: 'TradingView', decoder: 'Readability extractor', browser: 244925, apitap: 229, pct: 99 }
   };
 
   var output = document.getElementById('tw-output');
@@ -750,7 +751,7 @@ footer a:hover { color: #00e5c0; }
       var bRow = el('div', { style: 'display:flex;align-items:center;gap:10px;margin:8px 0;font-size:0.82rem' });
       var bLabel = el('span', { style: 'min-width:60px;color:#7a7a8e;font-size:0.75rem' }, ['Browser']);
       var bBar = el('div', { style: 'height:24px;border-radius:3px;background:#ff4d4d;width:0px;transition:width 0.8s ease' });
-      var bNum = el('span', { style: 'font-weight:700;min-width:90px;text-align:right;color:#ff4d4d' }, ['0']);
+      var bNum = el('span', { style: 'font-weight:700;min-width:130px;text-align:right;color:#ff4d4d' }, ['0']);
       bRow.appendChild(bLabel);
       bRow.appendChild(bBar);
       bRow.appendChild(bNum);
@@ -759,7 +760,7 @@ footer a:hover { color: #00e5c0; }
       var aRow = el('div', { style: 'display:flex;align-items:center;gap:10px;margin:8px 0;font-size:0.82rem' });
       var aLabel = el('span', { style: 'min-width:60px;color:#7a7a8e;font-size:0.75rem' }, ['ApiTap']);
       var aBar = el('div', { style: 'height:24px;border-radius:3px;background:#00e5c0;width:0px;transition:width 0.8s ease' });
-      var aNum = el('span', { style: 'font-weight:700;min-width:90px;text-align:right;color:#00e5c0;font-size:1.1rem' }, ['0']);
+      var aNum = el('span', { style: 'font-weight:700;min-width:130px;text-align:right;color:#00e5c0;font-size:1.1rem' }, ['0']);
       aRow.appendChild(aLabel);
       aRow.appendChild(aBar);
       aRow.appendChild(aNum);
@@ -797,37 +798,37 @@ footer a:hover { color: #00e5c0; }
   });
 
   // Auto-run on load
-  runWidget('youtube');
+  runWidget('reddit');
 
   // ── Build Demo Tabs ───────────────────────────────────
   var DEMOS = [
     {
-      key: 'youtube', label: 'YouTube',
-      browserTokens: '~4,200 tokens', apitapTokens: '36 tokens',
-      browserContent: '<html><head><meta charset="utf-8">\n<title>Never Gonna Give You Up - YouTube</title>\n<meta name="viewport" content="width=device-width,\ninitial-scale=1"><link rel="stylesheet"\nhref="/s/desktop/..."><script nonce="...">\nvar ytInitialPlayerResponse = {videoId:\n"dQw4w9WgXcQ", title: {runs: [{text: "Rick\nAstley - Never Gonna Give You Up (Official\nMusic Video)"}]}, ...shortDescription: "The\nofficial video for \u201cNever Gonna Give You\nUp\u201d by Rick Astley...", viewCount: {\nvideoViewCountRenderer: {viewCount: {\nsimpleText: "1,557,835,012 views"} ...\n<div id="page-manager"><ytd-watch-flexy\nclass="style-scope ytd-page-manager" ...\n<!-- 3,800+ more tokens of DOM soup -->',
-      apitapContent: '{\n  "title": "Never Gonna Give You Up",\n  "channel": "Rick Astley",\n  "views": "1.5B",\n  "description": "The official video..."\n}',
-      pct: '99', desc: 'Same data. No browser.'
-    },
-    {
       key: 'reddit', label: 'Reddit',
-      browserTokens: '~8,900 tokens', apitapTokens: '627 tokens',
-      browserContent: '<shreddit-app class="reddit-desktop">\n<dsa-transparency-modal-provider>\n<report-flow-provider><shreddit-overlay-\ndisplay><div class="grid grid-cols-1\nm:grid-cols-[272px_1fr_312px]"><div id=\n"left-sidebar-container">...\n<shreddit-post id="t3_1k8x9y2" permalink=\n"/r/programming/comments/1k8x9y2/..." ...\n<faceplate-tracker source="post" action=\n"view"><div slot="children">...\n<!-- 8,000+ tokens of React hydration -->',
-      apitapContent: '{\n  "subreddit": "r/programming",\n  "title": "ApiTap: Skip the browser, call the API directly",\n  "score": 847,\n  "comments": [\n    {\n      "author": "dev_curious",\n      "body": "This is really neat...",\n      "score": 142\n    }\n    // ... structured thread\n  ]\n}',
-      pct: '93', desc: 'Structured thread with comments. No DOM parsing.'
+      browserTokens: '~125,805 tokens', apitapTokens: '641 tokens',
+      browserContent: '<shreddit-app class="reddit-desktop">\n<dsa-transparency-modal-provider>\n<report-flow-provider><shreddit-overlay-\ndisplay><div class="grid grid-cols-1\nm:grid-cols-[272px_1fr_312px]"><div id=\n"left-sidebar-container">...\n<shreddit-post id="t3_1k8x9y2" permalink=\n"/r/programming/comments/1k8x9y2/..." ...\n<faceplate-tracker source="post" action=\n"view"><div slot="children">...\n<!-- 125,000+ tokens of React hydration,\nCSS-in-JS, tracking pixels, and\nnested web components -->',
+      apitapContent: '1. "Falsehoods Programmers Believe About\n   Time" (693 pts, 193 comments)\n   by u/Digitalunicon\n2. Fake Job Interviews Are Installing\n   Backdoors on Developer Machines\n   (562 pts, 79 comments)\n3. "Vibe Coding" Threatens Open Source\n   (335 pts, 102 comments)\n4. Reducing the size of Go binaries by\n   up to 77% (229 pts, 21 comments)\n// ... 24 posts total, structured',
+      pct: '99', desc: '196x fewer tokens. Structured listing with scores.'
     },
     {
       key: 'hn', label: 'Hacker News',
-      browserTokens: '~2,000 tokens', apitapTokens: '~200 tokens',
+      browserTokens: '~8,604 tokens', apitapTokens: '219 tokens',
       browserContent: '<html><head><meta name="referrer"\ncontent="origin"><link rel="stylesheet"\ntype="text/css" href="news.css">...\n<table border="0" cellpadding="0"\ncellspacing="0" width="85%" bgcolor="#f6f6ef">\n<tr><td bgcolor="#ff6600"><table ...>\n<span class="titleline"><a href="...">\nShow HN: ...</a></span>\n<span class="subtext">\n<span class="score" id="score_12345">\n247 points</span>...\n<!-- nested table layout from 2007 -->',
-      apitapContent: '{\n  "id": 12345,\n  "title": "Show HN: ApiTap...",\n  "score": 247,\n  "by": "simonw",\n  "comments": 89,\n  "url": "https://apitap.io"\n}',
-      pct: '90', desc: 'Clean JSON from the Firebase API. No table parsing.'
+      apitapContent: '1. Jimi Hendrix was a systems engineer\n   (325 pts, 114 comments)\n2. First Website (1992)\n   (114 pts, 25 comments)\n3. Making MCP cheaper via CLI\n   (138 pts, 69 comments)\n4. Windows 11 Notepad to support Markdown\n   (202 pts, 342 comments)\n// ... 10 stories, clean numbered list',
+      pct: '97', desc: 'Clean list from the Firebase API. No table parsing.'
     },
     {
-      key: 'pentagon', label: 'Pentagon Pizza \uD83C\uDF55',
-      browserTokens: '~3,000 tokens', apitapTokens: '189 tokens',
-      browserContent: '<html><head><title>PIZZINT Watch - Global\nThreat Assessment Dashboard</title>\n<meta name="viewport" content="width=device-\nwidth"><link rel="stylesheet" href="/assets/\ndashboard.css"><script src="/vendor/d3.min.js">\n<\/script><script src="/vendor/topojson.js">\n<\/script>...\n<div class="dashboard-grid">\n<div class="threat-panel" id="doomsday-\nclock-widget"><svg viewBox="0 0 400 400">\n<circle cx="200" cy="200" r="190" class=\n"clock-face"/>...\n<div class="prediction-markets-feed"\ndata-source="polymarket,metaculus">\n<div class="market-card" data-event-id=\n"evt_291847"><span class="outcome">\n<!-- 2,500+ more tokens of SVG maps\nand nested dashboard components -->',
-      apitapContent: '{\n  "doomsday_clock": "89 seconds to midnight",\n  "markets": [\n    {\n      "source": "Polymarket",\n      "title": "NATO expansion by 2026",\n      "probability": 0.73,\n      "volume": "$2.1M"\n    },\n    {\n      "source": "GDELT",\n      "event": "Global instability index",\n      "score": 312,\n      "trend": "rising"\n    },\n    {\n      "source": "Doomsday Clock",\n      "status": "89 seconds to midnight",\n      "last_moved": "2024-01-23"\n    }\n  ]\n}',
-      pct: '94', desc: 'Live geopolitical prediction markets. No browser.'
+      key: 'wikipedia', label: 'Wikipedia',
+      browserTokens: '~68,996 tokens', apitapTokens: '76 tokens',
+      browserContent: '<!DOCTYPE html>\n<html class="client-nojs vector-feature\n-language-in-header-enabled ...">\n<head><meta charset="UTF-8"><title>\nTypeScript - Wikipedia</title>\n<script>(RLQ=window.RLQ||[]).push(function(){\nmw.loader.impl(function(){return{\n"user.options@12s5i":function(){mw.user.\noptions.set({"hierarchical...")}...\n<link rel="stylesheet" href="/w/load.php?\nlang=en&modules=ext.cite.styles...">\n<!-- 68,000+ tokens of MediaWiki\nmarkup, sidebars, and scripts -->',
+      apitapContent: 'TypeScript (TS) is a high-level\nprogramming language that adds static\ntyping with optional type annotations\nto JavaScript. It is designed for\ndeveloping large applications. It\ntranspiles to JavaScript. It is\ndeveloped by Microsoft as free and\nopen-source software released under\nan Apache License 2.0.',
+      pct: '99', desc: '908x fewer tokens. Clean extract via REST API.'
+    },
+    {
+      key: 'tradingview', label: 'TradingView',
+      browserTokens: '~244,925 tokens', apitapTokens: '229 tokens',
+      browserContent: '<!doctype html><html lang="en"><head>\n<meta charset="utf-8"><title>TradingView\n\u2014 Track All Markets</title>\n<meta name="description" content="Where the\nworld charts, chats and trades markets...">\n<link rel="preload" as="script" href=\n"/static/bundles/runtime.abc123.js">\n<script>window.__initialState__={user:{},\nfeatureToggles:{darkMode:true,...},\nmarketData:{...}...</script>\n<!-- 244,000+ tokens of SSR bundles,\nmarket widget configs, WebSocket\nsetup, and charting library code -->',
+      apitapContent: 'LCID: Lucid Stock Drops 5% Despite\n  Revenue Beat, Bright Growth Outlook\n  (NASDAQ:LCID)\n\nMicrosoft Beats Revenue Estimates,\n  Azure Growth Accelerates\n  (NASDAQ:MSFT)\n\nBitcoin Crosses $100K as ETF Inflows\n  Surge to Record Levels\n  (BITSTAMP:BTCUSD)\n// ... live financial news headlines',
+      pct: '99', desc: '1,070x fewer tokens. Live financial news.'
     }
   ];
 
